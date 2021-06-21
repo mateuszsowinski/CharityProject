@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <a href="${pageContext.request.contextPath}/register" class="btn btn--large">Załóż konto</a>
 </section>
 
 
@@ -79,10 +79,11 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
+            <c:forEach items="${institution}" var="institution">
             <li>
                 <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
+                    <div class="title">Fundacja "${institution.name}"</div>
+                    <div class="subtitle">Cel i misja: ${institution.description}.</div>
                 </div>
 
                 <div class="col">
@@ -90,18 +91,19 @@
                     <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
                 </div>
             </li>
+            </c:forEach>
 
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja “Dla dzieci"</div>
-                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-                </div>
-                <div class="col">
-                    <div class="title">Fundacja “Bez domu”</div>
-                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                </div>
+<%--            <li>--%>
+<%--                <div class="col">--%>
+<%--                    <div class="title">Fundacja “Dla dzieci"</div>--%>
+<%--                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>--%>
+<%--                </div>--%>
+<%--                <div class="col">--%>
+<%--                    <div class="title">Fundacja “Bez domu”</div>--%>
+<%--                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>--%>
+<%--                </div>--%>
 
-            </li>
+<%--            </li>--%>
 
         </ul>
 

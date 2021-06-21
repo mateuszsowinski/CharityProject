@@ -5,10 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Setter
@@ -21,18 +20,15 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer quantity;
+    @ManyToOne
+    private Category categories;
+    @ManyToOne
+    private Institution institution;
+    private String street;
+    private String city;
+    private String zipCode;
+    private LocalDate pickUpDate;
+    private LocalTime pickUpTime;
+    private String pickUpComment;
 
-
-//    - id
-//- quantity (liczba worków) (Integer)
-//- categories (lista obiektów typu `Category`), pamiętaj o odpowiedniej adnotacji
-//- institution (obiekt typu `Institution`), pamiętaj o odpowiedniej adnotacji.
-//- street (String)
-//- city (String)
-//- zipCode (String)
-//- pickUpDate (LocalDate)
-//- pickUpTime (LocalTime)
-//- pickUpComment (String)
-//
-//
 }

@@ -1,16 +1,15 @@
 package pl.sowinski.charity.institution;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.sowinski.charity.model.Institution;
-import pl.sowinski.repository.InstitutionRepository;
+import pl.sowinski.charity.repository.InstitutionRepository;
 
 import java.util.List;
 import java.util.Optional;
 @Service
 public class JpaInstitutionService implements InstitutionService {
 
-   public final InstitutionRepository institutionRepository;
+private final InstitutionRepository institutionRepository;
 
     public JpaInstitutionService(InstitutionRepository institutionRepository) {
         this.institutionRepository = institutionRepository;

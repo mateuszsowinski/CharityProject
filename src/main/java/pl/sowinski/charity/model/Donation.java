@@ -21,8 +21,10 @@ public class Donation {
     private Long id;
     private Integer quantity;
     @ManyToOne
+    @JoinColumn(name = "categories_id")
     private Category categories;
     @ManyToOne
+    @JoinColumn(name = "institution_id")
     private Institution institution;
     private String street;
     private String city;

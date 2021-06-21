@@ -79,7 +79,7 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <c:forEach items="${institution}" var="institution">
+            <c:forEach items="${institution}" var="institution" varStatus="status">
             <li>
                 <div class="col">
                     <div class="title">Fundacja "${institution.name}"</div>
@@ -87,11 +87,19 @@
                 </div>
 
                 <div class="col">
-                    <div class="title">Fundacja "A kogo"</div>
-                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
+                    <div class="title" >Fundacja "${institution.name}"</div>
+                    <div class="subtitle">Cel i misja: ${institution.description}.</div>
                 </div>
+
             </li>
             </c:forEach>
+
+
+<%--            <c:forEach items="${element}" var="myCollection" varStatus="loopStatus">--%>
+<%--                <tr class="${loopStatus.index % 2 == 0 ? 'even' : 'odd'}">--%>
+<%--                    ...--%>
+<%--                </tr>--%>
+<%--            </c:forEach>--%>
 
 <%--            <li>--%>
 <%--                <div class="col">--%>

@@ -1,11 +1,12 @@
 package pl.sowinski.charity.category;
 
+import org.springframework.stereotype.Service;
 import pl.sowinski.charity.model.Category;
 import pl.sowinski.charity.repository.CategoryRepository;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class JpaCategoryService implements CategoryService {
 
     private final CategoryRepository categoryRepository;

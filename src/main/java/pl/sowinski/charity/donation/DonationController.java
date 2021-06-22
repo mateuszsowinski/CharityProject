@@ -6,24 +6,37 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.sowinski.charity.category.CategoryService;
+import pl.sowinski.charity.institution.InstitutionService;
+import pl.sowinski.charity.model.Category;
 import pl.sowinski.charity.model.Donation;
+import pl.sowinski.charity.model.Institution;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class DonationController {
 
    public final DonationService donationService;
+   public final CategoryService categoryService;
+   public final InstitutionService institutionService;
 
-    public DonationController(DonationService donationService) {
+    public DonationController(DonationService donationService, CategoryService categoryService, InstitutionService institutionService) {
         this.donationService = donationService;
+        this.categoryService = categoryService;
+        this.institutionService = institutionService;
     }
 
 
     @GetMapping("/form")
     public String donation(Model model){
         Donation donation = new Donation();
+        List<Category> categories = categoryService.getCategory();
+        List<Institution> institutions = institutionService.getInstitution();
+        model.addAttribute("categories", categories);
         model.addAttribute("donation", donation);
+        model.addAttribute("institution", institutions);
         return "form";
     }
     @PostMapping("/form")
@@ -40,14 +53,3 @@ public class DonationController {
         return "form_success";
     }
 }
-
-
-//
-//    @PostMapping("/add")
-//    public String addProduct(@ModelAttribute("product") @Valid Product product, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            return "productForm";
-//        }
-//        productService.add(product);
-//        return "redirect:/app/product/list";
-//    }

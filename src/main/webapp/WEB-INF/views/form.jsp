@@ -41,54 +41,57 @@
                 <h3>Zaznacz co chcesz oddać:</h3>
 
                 <div class="form-group form-group--checkbox">
+                    <c:forEach items="${categories}" var="categories">
                     <label>
-                        <input
+
+                        <form:input path="categories"
                                 type="checkbox"
                                 name="categories"
                                 value="clothes-to-use"
                         />
                         <span class="checkbox"></span>
                         <span class="description"
-                        >ubrania, które nadają się do ponownego użycia</span
+                        >${categories}</span
                         >
                     </label>
                 </div>
+                </c:forEach>
 
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input
-                                type="checkbox"
-                                name="categories"
-                                value="clothes-useless"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="description">ubrania, do wyrzucenia</span>
-                    </label>
-                </div>
+<%--                <div class="form-group form-group--checkbox">--%>
+<%--                    <label>--%>
+<%--                        <input--%>
+<%--                                type="checkbox"--%>
+<%--                                name="categories"--%>
+<%--                                value="clothes-useless"--%>
+<%--                        />--%>
+<%--                        <span class="checkbox"></span>--%>
+<%--                        <span class="description">ubrania, do wyrzucenia</span>--%>
+<%--                    </label>--%>
+<%--                </div>--%>
 
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="toys"/>
-                        <span class="checkbox"></span>
-                        <span class="description">zabawki</span>
-                    </label>
-                </div>
+<%--                <div class="form-group form-group--checkbox">--%>
+<%--                    <label>--%>
+<%--                        <input type="checkbox" name="categories" value="toys"/>--%>
+<%--                        <span class="checkbox"></span>--%>
+<%--                        <span class="description">zabawki</span>--%>
+<%--                    </label>--%>
+<%--                </div>--%>
 
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="books"/>
-                        <span class="checkbox"></span>
-                        <span class="description">książki</span>
-                    </label>
-                </div>
+<%--                <div class="form-group form-group--checkbox">--%>
+<%--                    <label>--%>
+<%--                        <input type="checkbox" name="categories" value="books"/>--%>
+<%--                        <span class="checkbox"></span>--%>
+<%--                        <span class="description">książki</span>--%>
+<%--                    </label>--%>
+<%--                </div>--%>
 
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="other"/>
-                        <span class="checkbox"></span>
-                        <span class="description">inne</span>
-                    </label>
-                </div>
+<%--                <div class="form-group form-group--checkbox">--%>
+<%--                    <label>--%>
+<%--                        <input type="checkbox" name="categories" value="other"/>--%>
+<%--                        <span class="checkbox"></span>--%>
+<%--                        <span class="description">inne</span>--%>
+<%--                    </label>--%>
+<%--                </div>--%>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Dalej</button>

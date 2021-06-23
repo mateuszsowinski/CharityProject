@@ -15,9 +15,12 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category {
+public class UserOperator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String lastname;
+    private String email;
+    private String password;
 }

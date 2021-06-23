@@ -7,9 +7,9 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Setter
@@ -21,11 +21,10 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
     private Integer quantity;
-    @ManyToOne
+    @ManyToMany()
     @JoinColumn(name = "categories_id")
-    private Category categories;
+    private List<Category> categories;
     @ManyToOne
     @JoinColumn(name = "institution_id")
     private Institution institution;

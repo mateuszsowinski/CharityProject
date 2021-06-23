@@ -7,4 +7,6 @@ import pl.sowinski.charity.model.UserOperator;
 @Repository
 public interface UserRepository extends JpaRepository<UserOperator, Long> {
 
+    UserOperator findByEmail(String email);
+    UserOperator findByUserName(String name);
 }

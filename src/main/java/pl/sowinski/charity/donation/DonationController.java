@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.sowinski.charity.category.CategoryService;
 import pl.sowinski.charity.institution.InstitutionService;
 import pl.sowinski.charity.model.Category;
@@ -16,6 +17,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@RequestMapping("/app")
 public class DonationController {
 
    public final DonationService donationService;

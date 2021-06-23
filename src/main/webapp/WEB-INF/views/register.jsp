@@ -14,22 +14,28 @@
 
 <section class="login-page">
     <h2>Załóż konto</h2>
-    <form>
+    <form:form modelAttribute="user" method="post" >
         <div class="form-group">
-            <input type="email" name="email" placeholder="Email" />
+            <form:input type="text" path="name" placeholder="Imię" />
         </div>
         <div class="form-group">
-            <input type="password" name="password" placeholder="Hasło" />
+            <form:input type="text" path="lastname" placeholder="Nazwisko"  />
+        </div>
+        <div class="form-group">
+            <form:input type="email" path="email" placeholder="Email"  />
+        </div>
+        <div class="form-group">
+            <form:input type="password" path="password" placeholder="Hasło"  />
         </div>
         <div class="form-group">
             <input type="password" name="password2" placeholder="Powtórz hasło" />
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
+            <a href="/login" class="btn btn--without-border">Zaloguj się</a>
             <button class="btn" type="submit">Załóż konto</button>
         </div>
-    </form>
+    </form:form>
 </section>
 
 <%@ include file="/WEB-INF/views/permanent/footer.jsp" %>

@@ -16,7 +16,7 @@
     <h2>Załóż konto</h2>
     <form:form modelAttribute="user" method="post" >
         <div class="form-group">
-            <form:input type="text" path="name" placeholder="Imię" />
+            <form:input type="text" path="userName" placeholder="Imię" />
         </div>
         <div class="form-group">
             <form:input type="text" path="lastname" placeholder="Nazwisko"  />

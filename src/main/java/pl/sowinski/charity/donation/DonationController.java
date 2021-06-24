@@ -47,7 +47,7 @@ public class DonationController {
             return "form";
         }
         donationService.add(donation);
-        return "redirect:/form_success";
+        return "redirect:/app/form_success";
     }
 
     @GetMapping("/form_success")

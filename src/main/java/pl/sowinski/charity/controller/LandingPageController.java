@@ -1,4 +1,4 @@
-package pl.sowinski.charity;
+package pl.sowinski.charity.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,6 @@ import pl.sowinski.charity.institution.InstitutionService;
 import pl.sowinski.charity.model.Institution;
 import pl.sowinski.charity.model.UserOperator;
 import pl.sowinski.charity.repository.DonationRepository;
-import pl.sowinski.charity.user.CustomUserDetails;
 import pl.sowinski.charity.user.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -80,7 +79,7 @@ public class LandingPageController {
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/login?logout";
+        return "redirect:/login";
     }
 
 }

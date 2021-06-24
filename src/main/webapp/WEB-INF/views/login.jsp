@@ -15,7 +15,7 @@
 
 <section class="login-page">
     <h2>Zaloguj się</h2>
-    <form:form modelAttribute="user" method="post">
+    <form:form method="post">
         <div class="form-group">
             <input type="text" id="email" name="userName" placeholder="Email" />
         </div>

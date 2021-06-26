@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import pl.sowinski.charity.user.CustomUserDetailsService;
 
 @Configuration
@@ -32,6 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         return daoAuthenticationProvider;
     }
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+        return new MySimpleUrlAuthenticationSuccessHandler();
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -40,15 +45,39 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/app/**")
-                .authenticated()
-                .anyRequest()
-                .hasRole("USER")
+         http.authorizeRequests()
+         .antMatchers("/app/**")
+         .authenticated()
+         .anyRequest()
+         .permitAll()
 
-                .and()
-                .formLogin().loginPage("/login").usernameParameter("userName").defaultSuccessUrl("/app/form")
-                .permitAll().and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
+         .and()
+         .formLogin().loginPage("/login").usernameParameter("userName").successHandler(myAuthenticationSuccessHandler())
+         .permitAll().and()
+         .logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
 
     }
 }
+// http.authorizeRequests()
+//         .antMatchers("/app/**")
+//         .authenticated()
+//         .anyRequest()
+//         .permitAll()
+//
+//         .and()
+//         .formLogin().loginPage("/login").usernameParameter("userName").successHandler(myAuthenticationSuccessHandler())
+//         .permitAll().and()
+//         .logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
+
+
+//     http.authorizeRequests()
+//                .antMatchers("/app/**").authenticated()
+//                .antMatchers("/admin/**").authenticated()
+//                .antMatchers("/css/**", "/images/**", "/js/**").permitAll()
+//                .anyRequest()
+//                .permitAll()
+//
+//                .and()
+//                .formLogin().loginPage("/login").usernameParameter("userName").successHandler(myAuthenticationSuccessHandler())
+//                .permitAll().and()
+//                .logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();

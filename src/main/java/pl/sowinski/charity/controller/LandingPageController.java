@@ -43,8 +43,8 @@ public class LandingPageController {
     @GetMapping("")
     public String startingPage(Model model) {
         List<Institution> institutions = institutionService.getInstitution();
-        Optional<Integer> quantity = donationRepository.sumQuantity();
-        Optional<Integer> count = donationRepository.countDonationById();
+        Integer quantity = donationRepository.sumQuantity();
+        Integer count = donationRepository.countDonationById();
         model.addAttribute("institution", institutions);
         model.addAttribute("quantity", quantity);
         model.addAttribute("count", count);

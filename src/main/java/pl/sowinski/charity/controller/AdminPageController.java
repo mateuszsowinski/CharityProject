@@ -78,3 +78,14 @@ public class AdminPageController {
         return "redirect:/admin/admin/list";
     }
 }
+
+//    @GetMapping("/update/{id:\\d+}")
+//    public String updateInstitution(@PathVariable Long id, Model model){
+//        model.addAttribute("institution", institutionService.getInstitutionById(id));
+//        return "institution/institutionForm";
+//    }
+//    @PostMapping("/update/{id:\\d+}")
+//    public String updateInstitutionUpdate(@ModelAttribute("institution") Institution institution){
+//        institutionService.update(institution);
+//        return "redirect:/admin/institution/list";
+//    }

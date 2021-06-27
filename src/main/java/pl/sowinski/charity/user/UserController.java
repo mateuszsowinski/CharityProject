@@ -4,7 +4,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.sowinski.charity.model.Institution;
 import pl.sowinski.charity.model.UserOperator;
 import pl.sowinski.charity.repository.RoleRepository;
 
@@ -50,14 +49,13 @@ public class UserController {
     }
     @GetMapping("/add")
     public String addUser(Model model){
-        UserOperator userOperator = new UserOperator();
-        model.addAttribute("users", userOperator);
+        UserOperator user = new UserOperator();
+        model.addAttribute("user", user);
         return "user/userForm";
     }
     @PostMapping("/add")
-    public String addUserForm(@ModelAttribute("users") UserOperator userOperator){
-        userService.add(userOperator);
+    public String addUserForm(@ModelAttribute("user") UserOperator user){
+        userService.add(user);
         return "redirect:/admin/user/list";
     }
 }
-

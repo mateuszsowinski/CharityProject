@@ -13,7 +13,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 
-<form:form method="post" modelAttribute="admin">
+<form:form method="post" modelAttribute="admin" >
     <div class="form-group">
         <p hidden>  <form:input path="id" type="text" value=""/></div>
     </p>

@@ -31,8 +31,9 @@ public class JpaUserService implements UserService {
     }
 
     @Override
-    public Optional<UserOperator> getUserById(Long idUser) {
-        return userRepository.findById(idUser);
+    public UserOperator getUserById(Long idUser) {
+        Optional<UserOperator> getUserById= userRepository.findById(idUser);
+        return getUserById.get();
     }
 
     @Override

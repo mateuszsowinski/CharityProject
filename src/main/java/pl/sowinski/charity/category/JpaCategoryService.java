@@ -6,6 +6,7 @@ import pl.sowinski.charity.repository.CategoryRepository;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class JpaCategoryService implements CategoryService {
 
@@ -21,8 +22,9 @@ public class JpaCategoryService implements CategoryService {
     }
 
     @Override
-    public Optional<Category> getCategoryById(Long idCategory) {
-        return categoryRepository.findById(idCategory);
+    public Category getCategoryById(Long idCategory) {
+        Optional<Category> getCategoryById = categoryRepository.findById(idCategory);
+        return getCategoryById.get();
     }
 
     @Override

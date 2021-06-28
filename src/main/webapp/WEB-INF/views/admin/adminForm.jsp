@@ -21,7 +21,7 @@
     <form:input path="lastname" type="text" value="" placeholder="Nazwisko"/>
     <form:input path="email" type="text" value="" placeholder="Email"/>
 
-    <button class="btn" type="submit">Dadaj kategorię</button>
+    <button class="btn" type="submit">Edytuj admina </button>
 
 </form:form>
 

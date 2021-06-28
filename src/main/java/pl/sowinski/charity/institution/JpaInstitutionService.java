@@ -21,8 +21,9 @@ private final InstitutionRepository institutionRepository;
     }
 
     @Override
-    public Optional<Institution> getInstitutionById(Long id) {
-        return institutionRepository.findById(id);
+    public Institution getInstitutionById(Long id) {
+        Optional<Institution> getInstitutionById = institutionRepository.findById(id);
+        return getInstitutionById.get();
     }
 
     @Override

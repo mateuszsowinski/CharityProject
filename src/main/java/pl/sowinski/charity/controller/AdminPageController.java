@@ -4,8 +4,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.sowinski.charity.model.Institution;
-import pl.sowinski.charity.model.Role;
 import pl.sowinski.charity.model.UserOperator;
 import pl.sowinski.charity.repository.RoleRepository;
 import pl.sowinski.charity.repository.UserRepository;
@@ -78,14 +76,3 @@ public class AdminPageController {
         return "redirect:/admin/admin/list";
     }
 }
-
-//    @GetMapping("/update/{id:\\d+}")
-//    public String updateInstitution(@PathVariable Long id, Model model){
-//        model.addAttribute("institution", institutionService.getInstitutionById(id));
-//        return "institution/institutionForm";
-//    }
-//    @PostMapping("/update/{id:\\d+}")
-//    public String updateInstitutionUpdate(@ModelAttribute("institution") Institution institution){
-//        institutionService.update(institution);
-//        return "redirect:/admin/institution/list";
-//    }

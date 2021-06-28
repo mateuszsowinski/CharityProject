@@ -21,8 +21,9 @@ public class JpaDonationService implements DonationService {
     }
 
     @Override
-    public Optional<Donation> getDonationById(Long id) {
-        return donationRepository.findById(id);
+    public Donation getDonationById(Long id) {
+        Optional<Donation> getDonationById = donationRepository.findById(id);
+        return getDonationById.get();
     }
 
     @Override

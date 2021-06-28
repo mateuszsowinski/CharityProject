@@ -17,8 +17,10 @@
     <div class="form-group">
         <p hidden>  <form:input path="id" type="text" value=""/></div>
     </p>
-    <form:input path="name" type="text" value="" placeholder="Nazwa Instytucji"/>
-    <form:input path="description" type="text" value="" placeholder="Opis"/>
+    <form:input path="userName" type="text" value="" placeholder="Imię uzytkownika"/>
+    <form:input path="lastname" type="text" value="" placeholder="Nazwisko"/>
+    <form:input path="email" type="text" value="" placeholder="Email"/>
+
 
     <button class="btn" type="submit">Dadaj kategorię</button>
 

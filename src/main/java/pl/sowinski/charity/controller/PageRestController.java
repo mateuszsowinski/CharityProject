@@ -1,24 +1,32 @@
-package pl.sowinski.charity.user;
+package pl.sowinski.charity.controller;
 
 import org.springframework.web.bind.annotation.*;
+import pl.sowinski.charity.donation.DonationService;
+import pl.sowinski.charity.model.Donation;
 import pl.sowinski.charity.model.UserOperator;
+import pl.sowinski.charity.user.UserService;
 
-import java.awt.print.Book;
 import java.util.List;
 
 @RestController
 @RequestMapping("/rest")
-public class UserControllerRest {
+public class PageRestController {
 
     private final UserService userService;
+    private final DonationService donationService;
 
-    public UserControllerRest(UserService userService) {
+    public PageRestController(UserService userService, DonationService donationService) {
         this.userService = userService;
+        this.donationService = donationService;
     }
 
-    @GetMapping
+    @GetMapping("/user")
     public List<UserOperator> getUser() {
         return userService.getUser();
+    }
+    @GetMapping("/donation")
+    public List<Donation> getDonation() {
+        return donationService.getDonation();
     }
 
     @GetMapping("/{userId:\\d+}")
@@ -42,11 +50,3 @@ public class UserControllerRest {
     }
 
 }
-
-//
-//    // Żądanie do Book Resource
-//    @DeleteMapping("/{bookId:\\d+}")
-//    public void deleteBook(@PathVariable Long bookId) {
-//        bookService.deleteBook(bookId);
-//    }
-//}

@@ -9,7 +9,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import pl.sowinski.charity.user.CustomUserDetailsService;
+
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -33,8 +38,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         return daoAuthenticationProvider;
     }
+
     @Bean
-    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
         return new MySimpleUrlAuthenticationSuccessHandler();
     }
 
@@ -45,15 +51,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-         http.authorizeRequests()
-         .antMatchers("/app/**").authenticated()
-         .anyRequest()
-         .permitAll()
+        http.authorizeRequests()
+                .antMatchers("/app/**").authenticated()
+                .anyRequest()
+                .permitAll()
 
-         .and()
-         .formLogin().loginPage("/login").usernameParameter("userName").successHandler(myAuthenticationSuccessHandler())
-         .permitAll().and()
-         .logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
+                .and()
+                .formLogin().loginPage("/login").usernameParameter("userName").successHandler(myAuthenticationSuccessHandler())
+                .permitAll().and()
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll()
+                .and().cors().and().csrf().disable();
 
     }
 }

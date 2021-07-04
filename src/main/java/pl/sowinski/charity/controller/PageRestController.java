@@ -20,13 +20,9 @@ public class PageRestController {
         this.donationService = donationService;
     }
 
-    @GetMapping("/user")
+    @GetMapping
     public List<UserOperator> getUser() {
         return userService.getUser();
-    }
-    @GetMapping("/donation")
-    public List<Donation> getDonation() {
-        return donationService.getDonation();
     }
 
     @GetMapping("/{userId:\\d+}")
@@ -34,17 +30,17 @@ public class PageRestController {
         return userService.getUserById(userId);
     }
 
-    @PostMapping("/addUser")
+    @PostMapping
     public UserOperator addUser(@RequestBody UserOperator user) {
         return userService.add(user);
     }
-    @PutMapping("/update/{userId:\\d+}")
+    @PutMapping("/{userId:\\d+}")
     public UserOperator update(@PathVariable Long userId, @RequestBody UserOperator userOperator){
         userOperator.setId(userId);
         userService.update(userOperator);
         return userOperator;
     }
-    @RequestMapping(method = RequestMethod.GET, value = "/delete/{userId:\\d+}")
+    @DeleteMapping("/{userId:\\d+}")
     public void deleteUser(@PathVariable Long userId){
         userService.delete(userId);
     }

@@ -11,12 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.sowinski.charity.config.JavaMailSenderImpl;
 import pl.sowinski.charity.institution.InstitutionService;
 import pl.sowinski.charity.model.Institution;
 import pl.sowinski.charity.model.UserOperator;
 import pl.sowinski.charity.repository.DonationRepository;
 import pl.sowinski.charity.user.UserService;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -30,12 +32,14 @@ public class LandingPageController {
     public final InstitutionService institutionService;
     public final DonationRepository donationRepository;
     public final UserService userService;
+    public final JavaMailSenderImpl javaMailSenderImpl;
 
 
-    public LandingPageController(InstitutionService institutionService, DonationRepository donationRepository, UserService userService) {
+    public LandingPageController(InstitutionService institutionService, DonationRepository donationRepository, UserService userService, JavaMailSenderImpl javaMailSenderImpl) {
         this.institutionService = institutionService;
         this.donationRepository = donationRepository;
         this.userService = userService;
+        this.javaMailSenderImpl = javaMailSenderImpl;
     }
 
 
@@ -64,11 +68,12 @@ public class LandingPageController {
     }
 
     @PostMapping("/register")
-    public String registerForm(@ModelAttribute("user") UserOperator user) {
+    public String registerForm(@ModelAttribute("user") UserOperator user) throws MessagingException {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String encodePassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(encodePassword);
         userService.add(user);
+        javaMailSenderImpl.sendMail(user.getEmail(), "Witaj, zarejestrowałeś się na stronie...","Witaj, "+ user.getUserName()+" zostałeś zarejestrowany na stronie",true);
         return "redirect:/login";
     }
 

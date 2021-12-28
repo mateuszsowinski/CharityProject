@@ -73,7 +73,7 @@ public class LandingPageController {
         String encodePassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(encodePassword);
         userService.add(user);
-        javaMailSenderImpl.sendMail(user.getEmail(), "Witaj, zarejestrowałeś się na stronie...","Witaj, "+ user.getUserName()+" zostałeś zarejestrowany na stronie",true);
+//        javaMailSenderImpl.sendMail(user.getEmail(), "Witaj, zarejestrowałeś się na stronie...","Witaj, "+ user.getUserName()+" zostałeś zarejestrowany na stronie",true);
         return "redirect:/login";
     }
 
